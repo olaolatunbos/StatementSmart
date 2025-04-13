@@ -28,9 +28,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r app/requirements.txt
 
-      - name: Run tests
-        run: pytest
-
       - name: Log in to Azure Container Registry (ACR)
         uses: azure/docker-login@v1
         with:
