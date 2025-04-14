@@ -21,7 +21,7 @@ variable "sku" {
 
 variable "admin_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Whether admin access is enabled"
 }
 
