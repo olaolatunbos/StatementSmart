@@ -51,4 +51,4 @@ jobs:
         with:
           imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/my-flask-app:latest
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          containerAppName: my-flask-app
+          containerAppName: taskmanagement-app
