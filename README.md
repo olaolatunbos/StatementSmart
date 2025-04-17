@@ -4,8 +4,8 @@ This repository automates the process of building, testing, and deploying a Flas
 
 
 The application is hosted here: https://www.taskmanagement-app.com
-## Diagram
-![Azure (2024) framewo](https://github.com/user-attachments/assets/357851c1-1800-4e90-a5f4-f6293133fd47)
+## Architecture
+![Azure (2024) framework-3](https://github.com/user-attachments/assets/c7afdb6c-0cfa-4b3d-adde-57c596b8ee63)
 
 
 
