@@ -10,6 +10,12 @@ permissions:
   contents: read
   pull-requests: write
 
+env:
+  ARM_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIAL).clientId }}
+  ARM_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIAL).clientSecret }}
+  ARM_SUBSCRIPTION_ID: ${{ fromJson(secrets.AZURE_CREDENTIAL).subscriptionId }}
+  ARM_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIAL).tenantId }}
+
 jobs:
   terraform_static_analysis:
     name: "Terraform Static Analysis"
