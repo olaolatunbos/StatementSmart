@@ -76,7 +76,7 @@ jobs:
         working-directory: ./terraform
         id: plan
         run: |
-          terraform plan -no-color > plan.txt
+          terraform plan -lock=false -no-color > plan.txt
           echo '```terraform' > plan_output.txt
           cat plan.txt >> plan_output.txt
           echo '```' >> plan_output.txt
