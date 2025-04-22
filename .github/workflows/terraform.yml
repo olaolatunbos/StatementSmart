@@ -64,10 +64,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Terraform Plan for Test
+        working-directory: ./terraform
         id: plan-test
         run: |
           terraform init
-          terraform plan -var-file=terraform/terraform.tfvars -out=plan-test
+          terraform plan -var-file=terraform.tfvars -out=plan-test
           terraform show -no-color plan-test > plan-test.txt
 
       - name: Upload Terraform Plan Artifact for Test
@@ -75,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: plan-test
-          path: plan-test
+          path: terraform/plan-test
 
       - name: Read Terraform Plan Output for Test
         if: github.event_name == 'pull_request'
