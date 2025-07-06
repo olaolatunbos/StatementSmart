@@ -36,10 +36,20 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build and tag Docker image
-        run: docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/my-flask-app:latest .
+        run: docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest .
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: "${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest"
+          format: "table"
+          exit-code: "0"
+          ignore-unfixed: true
+          vuln-type: "os,library"
+          severity: "CRITICAL,HIGH"
 
       - name: Push Docker image to ACR
-        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/my-flask-app:latest
+        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
 
       - name: Azure Login
         uses: azure/login@v1
@@ -49,6 +59,6 @@ jobs:
       - name: Deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
         with:
-          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/my-flask-app:latest
+          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
           containerAppName: taskmanagement-app

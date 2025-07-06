@@ -1,7 +1,7 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "taskmanagement-app-dev-rg"
-    storage_account_name = "taskmanagementtfstate"
+    resource_group_name  = "app-prod-rg"
+    storage_account_name = "taskapptfstate"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }

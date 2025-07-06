@@ -1,58 +1,64 @@
 provider "azurerm" {
   features {}
-  subscription_id = var.subscription_id
+  subscription_id = "001a4eb4-4cb2-47b9-a3bd-de9b5304872c"
+}
+resource "azurerm_storage_account" "res-0" {
+  access_tier                       = "Hot"
+  account_kind                      = "StorageV2"
+  account_replication_type          = "LRS"
+  account_tier                      = "Standard"
+  allow_nested_items_to_be_public   = false
+  cross_tenant_replication_enabled  = false
+  default_to_oauth_authentication   = false
+  dns_endpoint_type                 = "Standard"
+  https_traffic_only_enabled        = true
+  infrastructure_encryption_enabled = false
+  is_hns_enabled                    = false
+  large_file_share_enabled          = true
+  local_user_enabled                = true
+  location                          = "uksouth"
+  min_tls_version                   = "TLS1_2"
+  name                              = "taskapptfstate"
+  nfsv3_enabled                     = false
+  public_network_access_enabled     = true
+  queue_encryption_key_type         = "Service"
+  resource_group_name               = "app-prod-rg"
+  sftp_enabled                      = false
+  shared_access_key_enabled         = true
+  table_encryption_key_type         = "Service"
+  tags                              = {}
+  blob_properties {
+    change_feed_enabled      = false
+    last_access_time_enabled = false
+    versioning_enabled       = false
+    container_delete_retention_policy {
+      days = 7
+    }
+    delete_retention_policy {
+      days                     = 7
+      permanent_delete_enabled = false
+    }
+  }
+  share_properties {
+    retention_policy {
+      days = 7
+    }
+  }
 }
 
-module "rg" {
-  source   = "./modules/resource_group"
-  name     = var.resource_group_name
-  location = var.resource_group_location
+resource "azurerm_container_registry" "res-0" {
+  admin_enabled                 = true
+  anonymous_pull_enabled        = false
+  data_endpoint_enabled         = false
+  export_policy_enabled         = true
+  location                      = "uksouth"
+  name                          = "olaolat"
+  network_rule_bypass_option    = "AzureServices"
+  public_network_access_enabled = true
+  quarantine_policy_enabled     = false
+  resource_group_name           = "app-prod-rg"
+  sku                           = "Standard"
+  trust_policy_enabled          = false
+  zone_redundancy_enabled       = false
 }
 
-module "acr" {
-  source              = "./modules/container_registry"
-  name                = var.acr_name
-  location            = module.rg.location
-  resource_group_name = module.rg.name
-  sku                 = var.acr_sku
-  admin_enabled       = var.acr_admin_enabled
-}
-
-module "log_analytics" {
-  source              = "./modules/log_analytics_workspace"
-  name                = var.log_analytics_workspace_name
-  location            = module.rg.location
-  resource_group_name = module.rg.name
-}
-
-module "app_environment" {
-  source                     = "./modules/app_environment"
-  name                       = var.container_app_environment_name
-  location                   = module.rg.location
-  resource_group_name        = module.rg.name
-  log_analytics_workspace_id = module.log_analytics.id
-}
-
-resource "azurerm_user_assigned_identity" "app_identity" {
-  name                = var.identity_name
-  location            = module.rg.location
-  resource_group_name = module.rg.name
-}
-
-resource "azurerm_role_assignment" "acr_pull" {
-  scope                = module.acr.id
-  role_definition_name = "AcrPull"
-  principal_id         = azurerm_user_assigned_identity.app_identity.principal_id
-}
-
-module "container_app" {
-  source                       = "./modules/container_app"
-  name                         = var.container_app_name
-  container_name               = var.container_name
-  container_image              = var.container_image
-  container_app_environment_id = module.app_environment.id
-  resource_group_name          = module.rg.name
-  acr_login_server             = module.acr.login_server
-  identity_id                  = azurerm_user_assigned_identity.app_identity.id
-  container_port               = var.container_port
-}
