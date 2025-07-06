@@ -38,6 +38,9 @@ jobs:
       - name: Build and tag Docker image
         run: docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest .
 
+      - name: Push Docker image to ACR
+        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
@@ -48,17 +51,14 @@ jobs:
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
 
-      - name: Push Docker image to ACR
-        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
-
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Deploy to Azure Container Apps
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
-          resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          containerAppName: taskmanagement-app
+      # - name: Deploy to Azure Container Apps
+      #   uses: azure/container-apps-deploy-action@v1
+      #   with:
+      #     imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+      #     resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
+      #     containerAppName: taskmanagement-app
