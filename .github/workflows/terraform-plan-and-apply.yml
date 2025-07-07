@@ -39,7 +39,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config="resource_group_name=${{secrets.RESOURCE_GROUP_NAME}}" -backend-config="storage_account_name=${{secrets.STORAGE_ACCOUNT_NAME}}" -backend-config="container_name=${{secrets.STORAGE_ACCOUNT_CONTAINER_NAME}}"
+        run: terraform init -backend-config="resource_group_name=${{secrets.RESOURCE_GROUP_NAME}}" -backend-config="storage_account_name=${{secrets.STORAGE_ACCOUNT_NAME}}" -backend-config="container_name=${{secrets.STORAGE_ACCOUNT_CONTAINER_NAME}}" -backend-config="key=terraform.tfstate"
 
       - name: Terraform Validate
         id: validate
@@ -51,11 +51,16 @@ jobs:
           soft_fail: true
         env:
           CHECKOV_SKIP_UPDATE: true
+      - name: Write terraform.tfvars
+        run: |
+          cat <<EOF > terraform.tfvars
+          ${{ secrets.PROD_TFVARS }}
+          EOF
 
       - name: Terraform Plan
         id: plan
         run: |
-          terraform plan -no-color -var-file="./environments/prod.tfvars" -out main.tfplan
+          terraform plan -no-color -var-file="terraform.tfvars" -out main.tfplan
           terraform show -no-color main.tfplan > plan.txt
 
       - name: Upload Plan
