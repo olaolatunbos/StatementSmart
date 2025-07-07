@@ -51,8 +51,11 @@ jobs:
           soft_fail: true
         env:
           CHECKOV_SKIP_UPDATE: true
-      - name: Write terraform.tfvars file
-        run: echo "${{ secrets.PROD_TFVARS }}" > terraform.tfvars
+      - name: Write terraform.tfvars
+        run: |
+          cat <<EOF > terraform.tfvars
+          ${{ secrets.PROD_TFVARS }}
+          EOF
 
       - name: Terraform Plan
         id: plan
