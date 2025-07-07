@@ -1,9 +1,11 @@
-name: Build and Deploy Flask App
+name: Build and Deploy Application
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "app/**"
   workflow_dispatch:
 
 permissions:
@@ -35,30 +37,33 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Build and tag Docker image
-        run: docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest .
-
-      - name: Push Docker image to ACR
-        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+      - name: Build Docker image
+        run: docker build -t task-app:latest ./app
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: "${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest"
+          image-ref: "task-app:latest"
           format: "table"
-          exit-code: "0"
+          exit-code: "0" # Set to "1" to fail on findings
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"
+
+      - name: Tag image for ACR
+        run: docker tag task-app:latest ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+
+      - name: Push Docker image to ACR
+        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
 
       - name: Azure Login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # - name: Deploy to Azure Container Apps
-      #   uses: azure/container-apps-deploy-action@v1
-      #   with:
-      #     imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
-      #     resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-      #     containerAppName: taskmanagement-app
+      - name: Deploy to Azure Container Apps
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+          resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          containerAppName: taskmanagement-app
