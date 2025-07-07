@@ -66,4 +66,4 @@ jobs:
         with:
           imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          containerAppName: taskmanagement-app
+          containerAppName: task-app
