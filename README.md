@@ -1,4 +1,6 @@
 # Statement Smart
+<img width="1440" alt="Screenshot 2025-07-08 at 15 09 05" src="https://github.com/user-attachments/assets/24a4f484-3249-4ac8-915e-e543d1bdfa30" />
+
 
 ## Overview
 
