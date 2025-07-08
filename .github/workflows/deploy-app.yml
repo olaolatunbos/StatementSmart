@@ -38,12 +38,12 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t task-app:latest ./app
+        run: docker build -t statementsmart:latest ./app
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: "task-app:latest"
+          image-ref: "statementsmart:latest"
           format: "table"
           exit-code: "0" # Set to "1" to fail on findings
           ignore-unfixed: true
@@ -51,10 +51,10 @@ jobs:
           severity: "CRITICAL,HIGH"
 
       - name: Tag image for ACR
-        run: docker tag task-app:latest ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+        run: docker tag statementsmart:latest ${{ secrets.ACR_LOGIN_SERVER }}/statementsmart:latest
 
       - name: Push Docker image to ACR
-        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/statementsmart:latest
 
       - name: Azure Login
         uses: azure/login@v1
@@ -64,6 +64,6 @@ jobs:
       - name: Deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
         with:
-          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/task-app:latest
+          imageToDeploy: ${{ secrets.ACR_LOGIN_SERVER }}/statementsmart:latest
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          containerAppName: task-app
+          containerAppName: statementsmart
