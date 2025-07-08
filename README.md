@@ -1,5 +1,6 @@
 # Statement Smart
-<img width="1440" alt="Screenshot 2025-07-08 at 15 09 05" src="https://github.com/user-attachments/assets/24a4f484-3249-4ac8-915e-e543d1bdfa30" />
+<img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
+
 
 
 ## Overview
