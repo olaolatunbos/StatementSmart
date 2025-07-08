@@ -1,4 +1,7 @@
-# End-to-end Github Actions CI/CD
+# Statement Smart
+<img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
+
+
 
 ## Overview
 
@@ -6,7 +9,8 @@ This repository automates the process of building, testing, and deploying a Flas
 The application is hosted here: https://www.taskmanagement-app.com
 
 ## Architecture Diagram
-![Azure (2024) framework-3](https://github.com/user-attachments/assets/c7afdb6c-0cfa-4b3d-adde-57c596b8ee63)
+
+![ss drawio](https://github.com/user-attachments/assets/b8922449-f701-4f45-b6d8-efe7bc99aa40)
 
 
 ## Key Features
