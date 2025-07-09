@@ -19,10 +19,14 @@ This is an example of how you may give instructions on setting up your project l
 
 This is an example of how to list things you need to use the software and how to install them.
 
-- npm
+- Clone repository
 
 ```bash
-npm install npm@latest -g
+git clone 
+```
+- Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file
+```bash
+OPENAI_API_KEY='Your API key'
 ```
 
 ## Key Features
