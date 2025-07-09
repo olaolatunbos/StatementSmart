@@ -15,29 +15,24 @@ automatically categorises transactions using machine learning
 
 This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
 
-## Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- Clone repository
-
+1. Clone repository
 ```bash
 git clone https://github.com/olaolatunbos/StatementSmart.git
 ```
-- Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file.
+2. Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file.
 ```bash
 OPENAI_API_KEY='Your API key'
 ```
-- Create virtual environment and activate.
+3. Create virtual environment and activate.
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
-- Install dependencies
+4. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-- Run application locally
+5. Run application locally
 ```bash
 python app.py
 ```
