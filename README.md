@@ -7,15 +7,8 @@ automatically categorises transactions using machine learning
 
 <img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
 
-## Table of Contents
 
-- [Architecture Diagram](#architecture-diagram)
-- [🚀 Quick Start](#quick-start)
-- [🐳 Container Setup](#container-setup)
-- [🔧 Pipelines](#pipelines)
-- [🟣 Terraform](#terraform)
-
-## Architecture Diagram
+## 🏛️ Architecture Diagram
 
 ![ss drawio](https://github.com/user-attachments/assets/b8922449-f701-4f45-b6d8-efe7bc99aa40)
 
