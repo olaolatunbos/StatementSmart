@@ -37,7 +37,7 @@ docker run -p 3000:3000 statement-smart
 ```
 
 
-## Pipelines
+## 🔧 Pipelines
 ### deploy-app.yml
 Builds a Docker image from the Flask app, scans it with Trivy for vulnerabilities, pushes it to Azure Container Registry (ACR), and deploys it to Azure Container Apps.
 ### terraform-plan-and-apply.yml
@@ -46,7 +46,7 @@ Runs a Checkov security scan, formats and validates Terraform code, and posts th
 Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
 
 
-## Terraform
+## 🟪 Terraform
 
 
 
