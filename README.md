@@ -10,10 +10,10 @@ automatically categorises transactions using machine learning
 ## Table of Contents
 
 - [Architecture Diagram](#architecture-diagram)
-- [Quick Start](#quick-start)
-- [Container Setup](#container-setup)
-- [Pipelines](#pipelines)
-- [Terraform](#terraform)
+- [🚀 Quick Start](#quick-start)
+- [🐳 Container Setup](#container-setup)
+- [🔧 Pipelines](#pipelines)
+- [🟣 Terraform](#terraform)
 
 ## Architecture Diagram
 
@@ -48,7 +48,7 @@ docker run -p 3000:3000 statement-smart
 - Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
 
 
-## 🟪 Terraform
+## 🟣 Terraform
 The terraform/ directory provisions all necessary Azure infrastructure to support deployment and delivery of the application to end users.
 
 Provisioned Resources:
