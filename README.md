@@ -22,12 +22,26 @@ This is an example of how to list things you need to use the software and how to
 - Clone repository
 
 ```bash
-git clone 
+git clone https://github.com/olaolatunbos/StatementSmart.git
 ```
-- Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file
+- Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file.
 ```bash
 OPENAI_API_KEY='Your API key'
 ```
+- Create virtual environment and activate.
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+- Install dependencies
+```bash
+pip install -r requirements.txt
+```
+- Run application locally
+```bash
+python app.py
+```
+
 
 ## Key Features
 
