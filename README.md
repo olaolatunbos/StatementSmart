@@ -1,17 +1,29 @@
 # Statement Smart
-<img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
-
-
 
 ## Overview
 
-This repository automates the process of building, testing, and deploying a Flask application to Azure Container Apps using GitHub Actions. The workflow ensures that every push event to the `main` branch triggers a CI/CD pipeline.
-The application is hosted here: https://www.taskmanagement-app.com
+StatementSmart is a web application that parses bank statement PDFs, converts them to structured Excel sheets and
+automatically categorises transactions using machine learning
+
+<img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
 
 ## Architecture Diagram
 
 ![ss drawio](https://github.com/user-attachments/assets/b8922449-f701-4f45-b6d8-efe7bc99aa40)
 
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
+
+## Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+
+- npm
+
+```bash
+npm install npm@latest -g
+```
 
 ## Key Features
 
