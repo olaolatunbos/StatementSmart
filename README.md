@@ -39,14 +39,25 @@ docker run -p 3000:3000 statement-smart
 
 ## 🔧 Pipelines
 ### deploy-app.yml
-Builds a Docker image from the Flask app, scans it with Trivy for vulnerabilities, pushes it to Azure Container Registry (ACR), and deploys it to Azure Container Apps.
+- Builds a Docker image from the Flask app, scans it with Trivy for vulnerabilities, pushes it to Azure Container Registry (ACR), and deploys it to Azure Container Apps.
 ### terraform-plan-and-apply.yml
-Runs a Checkov security scan, formats and validates Terraform code, and posts the Terraform plan to the pull request as a comment. On manual trigger, it applies the approved       Terraform plan to provision Azure infrastructure.
+- Runs a Checkov security scan, formats and validates Terraform code, and posts the Terraform plan to the pull request as a comment. On manual trigger, it applies the approved       Terraform plan to provision Azure infrastructure.
 ### terraform-destroy.yml
-Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
+- Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
 
 
 ## 🟪 Terraform
+The terraform/ directory provisions all necessary Azure infrastructure to support deployment and delivery of the application to end users.
+
+Provisioned Resources:
+- Azure Container Apps:
+  Hosts the application in a fully managed, serverless container environment with built-in scaling and HTTPS support.
+- Azure Container Registry (ACR):
+  Stores and manages private Docker container images used for deployments.
+- Azure DNS:
+  Manages custom domain names and DNS records for routing traffic to application endpoints.
+- Azure Front Door:
+  Acts as a global entry point, providing load balancing, SSL termination, and fast content delivery through Microsoft's edge network.
 
 
 
