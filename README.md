@@ -1,5 +1,14 @@
 # Statement Smart
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Python Virtual Environment Setup](#python-virtual-environment-setup)
+- [Project Structure](#project-structure)
+
+
 ## Overview
 
 StatementSmart is a web application that parses bank statement PDFs, converts them to structured Excel sheets and
