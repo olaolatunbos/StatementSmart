@@ -28,7 +28,7 @@ python app.py
 ## 🐳 Container Setup
 ```bash
 docker build -t statement-smart .
-docker run -p 3000:3000 statement-smart 
+docker run --env-file .env -p 3000:3000 statement-smart 
 ```
 
 
