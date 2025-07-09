@@ -12,6 +12,8 @@ automatically categorises transactions using machine learning
 - [Architecture Diagram](#architecture-diagram)
 - [Quick Start](#quick-start)
 - [Container Setup](#container-setup)
+- [Pipelines](#pipelines)
+- [Terraform](#terraform)
 
 ## Architecture Diagram
 
