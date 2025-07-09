@@ -1,30 +1,60 @@
-# End-to-end Github Actions CI/CD
+# Statement Smart
 
 ## Overview
 
-This repository automates the process of building, testing, and deploying a Flask application to Azure Container Apps using GitHub Actions. The workflow ensures that every push event to the `main` branch triggers a CI/CD pipeline.
-The application is hosted here: https://www.taskmanagement-app.com
+StatementSmart is a web application that parses bank statement PDFs, converts them to structured Excel sheets and
+automatically categorises transactions using machine learning
 
-## Architecture Diagram
-![Azure (2024) framework-3](https://github.com/user-attachments/assets/c7afdb6c-0cfa-4b3d-adde-57c596b8ee63)
+<img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
 
 
-## Key Features
+## 🏛️ Architecture Diagram
 
-- **Azure Continaer Apps**  
-  Managed service for running containerized applications
+![ss drawio](https://github.com/user-attachments/assets/b8922449-f701-4f45-b6d8-efe7bc99aa40)
 
-- **Github Actions**  
-  Used for creating CI/CD pieplines thatbuild, test, and deploy applications.
+## 🚀 Quick Start
+```bash
+# Get OPENAI_API_KEY from https://platform.openai.com/playground/prompts and add to .env file.
+OPENAI_API_KEY='Your API key'
 
-- **Azure Front Door**  
-  Global, scalable entry point that provides load balancing, SSL termination, and fast failover for your applications.
+python3 -m venv venv
+source venv/bin/activate
 
-- **Azure DNS**  
-  DNS hosting service that allows you to manage DNS records using Azure infrastructure.
+pip install -r requirements.txt
 
-- **Terraform**  
-  Infrastructure as Code (IaC) tool used to provision and manage Azure resources declaratively.
+python app.py
+```
+
+## 🐳 Container Setup
+```bash
+docker build -t statement-smart .
+docker run --env-file .env -p 3000:3000 statement-smart 
+```
+
+
+## 🔧 Pipelines
+### deploy-app.yml
+- Builds a Docker image from the Flask app, scans it with Trivy for vulnerabilities, pushes it to Azure Container Registry (ACR), and deploys it to Azure Container Apps.
+### terraform-plan-and-apply.yml
+- Runs a Checkov security scan, formats and validates Terraform code, and posts the Terraform plan to the pull request as a comment. On manual trigger, it applies the approved       Terraform plan to provision Azure infrastructure.
+### terraform-destroy.yml
+- Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
+
+
+## 🟣 Terraform
+The terraform/ directory provisions all necessary Azure infrastructure to support deployment and delivery of the application to end users.
+
+Provisioned Resources:
+- Azure Container Apps:
+  Hosts the application in a fully managed, serverless container environment with built-in scaling and HTTPS support.
+- Azure Container Registry (ACR):
+  Stores and manages private Docker container images used for deployments.
+- Azure DNS:
+  Manages custom domain names and DNS records for routing traffic to application endpoints.
+- Azure Front Door:
+  Acts as a global entry point, providing load balancing, SSL termination, and fast content delivery through Microsoft's edge network.
+
+
 
 
 
