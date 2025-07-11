@@ -51,6 +51,7 @@ jobs:
           soft_fail: true
         env:
           CHECKOV_SKIP_UPDATE: true
+          
       - name: Write terraform.tfvars
         run: |
           cat <<EOF > terraform.tfvars
@@ -72,7 +73,8 @@ jobs:
           echo "PLAN_PROD<<EOF" >> $GITHUB_ENV
           cat plan.txt >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-      - name: Add Plan To PR
+          
+      - name: Add Plan To Pull Request
         if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v1
         with:
