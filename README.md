@@ -87,7 +87,8 @@ docker run --env-file .env -p 3000:3000 statement-smart
 ### terraform-destroy.yml
 - Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
 <img width="507" height="639" alt="Screenshot 2025-07-12 at 11 02 58" src="https://github.com/user-attachments/assets/1b2637cf-e729-4fd9-984f-cec6a98fe57c" />
-<img width="400" height="639" alt="Screenshot 2025-07-12 at 11 01 46" src="https://github.com/user-attachments/assets/5934785a-f5a2-439d-ad10-9fb1a2fd0824" />
+<img width="321" height="552" alt="Screenshot 2025-07-12 at 11 01 46" src="https://github.com/user-attachments/assets/417ed097-4109-4fb2-842d-9c8f834844b3" />
+
 
 
 ## 🟣 Terraform
