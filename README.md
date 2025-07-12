@@ -83,11 +83,11 @@ docker run --env-file .env -p 3000:3000 statement-smart
 ### deploy-app.yml
 - Builds a Docker image from the Flask app, scans it with Trivy for vulnerabilities, pushes it to Azure Container Registry (ACR), and deploys it to Azure Container Apps.
 ### terraform-plan-and-apply.yml
-- Runs a Checkov security scan, formats and validates Terraform code, and posts the Terraform plan to the pull request as a comment. On manual trigger, it applies the approved       Terraform plan to provision Azure infrastructure.
+- Runs a Checkov security scan, formats and validates Terraform code, and posts the Terraform plan to the pull request as a comment. On manual trigger, it applies the approvedTerraform plan to provision Azure infrastructure.
 ### terraform-destroy.yml
 - Manually triggered workflow that initializes the Terraform backend and destroys all previously provisioned infrastructure in Azure.
 <img width="507" height="639" alt="Screenshot 2025-07-12 at 11 02 58" src="https://github.com/user-attachments/assets/1b2637cf-e729-4fd9-984f-cec6a98fe57c" />
-<img width="321" height="552" alt="Screenshot 2025-07-12 at 11 01 46" src="https://github.com/user-attachments/assets/5934785a-f5a2-439d-ad10-9fb1a2fd0824" />
+<img width="400" height="639" alt="Screenshot 2025-07-12 at 11 01 46" src="https://github.com/user-attachments/assets/5934785a-f5a2-439d-ad10-9fb1a2fd0824" />
 
 
 ## 🟣 Terraform
