@@ -66,7 +66,6 @@ docker run --env-file .env -p 3000:3000 statement-smart
     │   ├── modules
     │   ├── providers
     │   └── terraform.tfstate
-    ├── .terraform.lock.hcl
     ├── main.tf
     ├── modules
     │   ├── container_app
@@ -77,7 +76,6 @@ docker run --env-file .env -p 3000:3000 statement-smart
     │   ├── log_analytics
     │   └── storage_account
     ├── terraform.tf
-    ├── terraform.tfvars
     └── variables.tf
 ```
 
