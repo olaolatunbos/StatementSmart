@@ -2,9 +2,6 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Create a non-root user and group
-RUN groupadd --system appgroup && useradd --system --gid appgroup appuser
-
 # Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
@@ -13,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Change ownership of the /app directory to the non-root user
+RUN groupadd --system appgroup && useradd --system --gid appgroup appuser
 RUN chown -R appuser:appgroup /app
 
 # Switch to the non-root user
