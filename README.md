@@ -31,6 +31,55 @@ docker build -t statement-smart .
 docker run --env-file .env -p 3000:3000 statement-smart 
 ```
 
+## Project Structure
+```bash
+.
+├── .github
+│   └── workflows
+│       ├── deploy-app.yml
+│       ├── terraform-destroy.yml
+│       └── terraform-plan-and-apply.yml
+├── .gitignore
+├── README.md
+├── app
+│   ├── .DS_Store
+│   ├── .env
+│   ├── Dockerfile
+│   ├── __pycache__
+│   │   └── openai.cpython-312.pyc
+│   ├── app.py
+│   ├── name.py
+│   ├── requirements.txt
+│   ├── static
+│   │   └── style.css
+│   ├── templates
+│   │   └── index.html
+│   ├── uploads
+│   │   └── new3.pdf
+│   └── venv
+│       ├── bin
+│       ├── include
+│       ├── lib
+│       └── pyvenv.cfg
+└── terraform
+    ├── .terraform
+    │   ├── modules
+    │   ├── providers
+    │   └── terraform.tfstate
+    ├── .terraform.lock.hcl
+    ├── main.tf
+    ├── modules
+    │   ├── container_app
+    │   ├── container_app_environment
+    │   ├── container_registry
+    │   ├── dns_zone
+    │   ├── front_door
+    │   ├── log_analytics
+    │   └── storage_account
+    ├── terraform.tf
+    ├── terraform.tfvars
+    └── variables.tf
+```
 
 ## 🔧 Pipelines
 ### deploy-app.yml
