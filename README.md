@@ -43,11 +43,7 @@ docker run --env-file .env -p 3000:3000 statement-smart
 ├── .gitignore
 ├── README.md
 ├── app
-│   ├── .DS_Store
-│   ├── .env
 │   ├── Dockerfile
-│   ├── __pycache__
-│   │   └── openai.cpython-312.pyc
 │   ├── app.py
 │   ├── name.py
 │   ├── requirements.txt
@@ -55,13 +51,6 @@ docker run --env-file .env -p 3000:3000 statement-smart
 │   │   └── style.css
 │   ├── templates
 │   │   └── index.html
-│   ├── uploads
-│   │   └── new3.pdf
-│   └── venv
-│       ├── bin
-│       ├── include
-│       ├── lib
-│       └── pyvenv.cfg
 └── terraform
     ├── .terraform
     │   ├── modules
