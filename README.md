@@ -2,7 +2,7 @@
 
 ## Overview
 
-StatementSmart is a web application that parses bank statement PDFs, converts them to structured Excel sheets and
+StatementSmart is a web application that parses Lloyds Bank statement PDFs, converts them to structured Excel sheets and
 automatically categorises transactions using machine learning
 
 <img width="1156" alt="Screenshot 2025-07-08 at 15 42 55" src="https://github.com/user-attachments/assets/1a4a614d-0db3-4ec3-9f0a-a639b54138dc" />
